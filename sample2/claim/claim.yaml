@@ -1,0 +1,11 @@
+apiVersion: demo.localdev.io/v1alpha1
+kind: DemoInfra
+metadata:
+  name: demo-infra
+  namespace: default
+spec:
+  location: eastus
+  resourceGroupName: localdev
+  storageAccountName: localdevdemo2sa
+  vnetAddressSpace: "10.1.0.0/16"
+  subnetAddressPrefix: "10.1.1.0/24"

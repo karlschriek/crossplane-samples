@@ -1,0 +1,44 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xdemoinfras.demo.localdev.io
+spec:
+  group: demo.localdev.io
+  names:
+    kind: XDemoInfra
+    plural: xdemoinfras
+  claimNames:
+    kind: DemoInfra
+    plural: demoinfras
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                location:
+                  type: string
+                  description: Azure region
+                resourceGroupName:
+                  type: string
+                  description: Azure resource group name
+                storageAccountName:
+                  type: string
+                  description: Globally unique storage account name
+                vnetAddressSpace:
+                  type: string
+                  description: VNet CIDR block
+                  default: "10.0.0.0/16"
+                subnetAddressPrefix:
+                  type: string
+                  description: Subnet CIDR block
+                  default: "10.0.1.0/24"
+              required:
+                - location
+                - resourceGroupName
+                - storageAccountName
