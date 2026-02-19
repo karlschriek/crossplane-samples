@@ -1,0 +1,21 @@
+apiVersion: storage.azure.upbound.io/v1beta1
+kind: Account
+metadata:
+  name: localdevdemosa
+spec:
+  forProvider:
+    location: eastus
+    resourceGroupName: localdev
+    accountTier: Standard
+    accountReplicationType: LRS
+    accountKind: StorageV2
+---
+apiVersion: storage.azure.upbound.io/v1beta1
+kind: Container
+metadata:
+  name: localdev-demo-container
+spec:
+  forProvider:
+    containerAccessType: private
+    storageAccountNameRef:
+      name: localdevdemosa
